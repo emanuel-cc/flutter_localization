@@ -1,12 +1,10 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:internazionalization/clases/app_translations_delegate.dart';
 import 'package:internazionalization/clases/application.dart';
 import 'package:internazionalization/home_page.dart';
-import 'package:internazionalization/idioma_page.dart';
  
-class Demolocalizations{
+/*class Demolocalizations{
   Demolocalizations(this.locale);
   final Locale locale;
 
@@ -22,12 +20,12 @@ class Demolocalizations{
     }
   };
 
-  String get title{
+  /*String get title{
     return _localizedValues[locale.languageCode]['title'];
-  }
-}
+  }*/
+}*/
 
-class DemoLocalizationsDelegate extends LocalizationsDelegate<Demolocalizations>{
+/*class DemoLocalizationsDelegate extends LocalizationsDelegate<Demolocalizations>{
   const DemoLocalizationsDelegate();
 
   @override
@@ -47,9 +45,9 @@ class DemoLocalizationsDelegate extends LocalizationsDelegate<Demolocalizations>
     // TODO: implement shouldReload
     return true;
   }
-}
+}*/
 
-class DemoApp extends StatelessWidget {
+/*class DemoApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,7 +59,7 @@ class DemoApp extends StatelessWidget {
       ),
     );
   }
-}
+}*/
 void main() => runApp(Demo());
  
 class Demo extends StatefulWidget {
@@ -71,16 +69,18 @@ class Demo extends StatefulWidget {
 
 class _DemoState extends State<Demo> {
   AppTranslationsDelegate _newLocaleDelegate;
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    _newLocaleDelegate = AppTranslationsDelegate(newLocale: null);
+    _newLocaleDelegate = AppTranslationsDelegate(newLocale:null);
     application.onLocaleChanged = onLocaleChange;
   }
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      
       /*localeResolutionCallback: (Locale locale, Iterable<Locale> supportedLocales) {
          // Check if the current device locale is supported
         for (var supportedLocale in supportedLocales) {
@@ -94,22 +94,23 @@ class _DemoState extends State<Demo> {
         return supportedLocales.first;
        },*/
       //onGenerateTitle: (BuildContext context)=>Demolocalizations.of(context).title,
+      home: HomePage(),
       localizationsDelegates: [
         _newLocaleDelegate,
         //const DemoLocalizationsDelegate(),
-        const AppTranslationsDelegate(),
+        //const AppTranslationsDelegate(),
         //provides localised strings
         GlobalMaterialLocalizations.delegate,
         //provides RTL support, traduce los elementos a los idiomas
         GlobalWidgetsLocalizations.delegate
       ],
-     /* supportedLocales: [
-        const Locale('en','US'),
-        const Locale('es','ES')
-      ],*/
-      supportedLocales: application.supportedLocales(),
+     supportedLocales: [
+        const Locale('en',''),
+        const Locale('es','')
+      ],
+      //supportedLocales: application.supportedLocales(),
       //title: 'Material App',
-      home: HomePage()
+      
     );
   }
 

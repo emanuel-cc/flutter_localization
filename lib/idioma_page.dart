@@ -26,16 +26,17 @@ class _IdiomasPageState extends State<IdiomasPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
+          
           //'Select Language'
           
-          AppTranslations.of(context).text("title_select_language")
+          AppTranslations.of(context).text("title"),
         ),
       ),
       body: _buildLanguagesList(),
     );
   }
 
-  _buildLanguagesList(){
+ Widget _buildLanguagesList(){
     return ListView.builder(
       itemCount: languagesList.length,
       itemBuilder: (context,index){
@@ -44,7 +45,7 @@ class _IdiomasPageState extends State<IdiomasPage> {
     );
   }
 
-  _buildLanguageItem(String language){
+ Widget _buildLanguageItem(String language){
     return InkWell(
       onTap: (){
         print(language);
@@ -54,7 +55,7 @@ class _IdiomasPageState extends State<IdiomasPage> {
         child: Padding(
           padding: EdgeInsets.symmetric(vertical: 20.0),
           child: Text(
-            language == null ? CircularProgressIndicator() : language,
+            language,
             style: TextStyle(fontSize: 24.0),
           ),
         ),
